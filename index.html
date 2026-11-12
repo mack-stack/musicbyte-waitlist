@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="MusicByte connects brands with bands for culture-led content and campaigns. Join the founding waitlist." />
+  <link rel="icon" href="data:," />
+  <title>MusicByte Waitlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --ink: #111210;
+      --paper: #f3f0e8;
+      --panel: #fffdf7;
+      --muted: #56584f;
+      --line: #b8b9ae;
+      --acid: #d6ff33;
+      --signal: #ff5b3d;
+      --dark: #171a16;
+      --dark-panel: #22251f;
+      --dark-muted: #bfc3b4;
+      --dark-line: #4b5045;
+      --shadow: 7px 7px 0 var(--ink);
+      --radius-sm: 5px;
+      --radius-lg: 18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f5f3e8;
+        --paper: #141612;
+        --panel: #1c1f1a;
+        --muted: #c0c4b7;
+        --line: #4c5246;
+        --dark: #080a08;
+        --dark-panel: #20241e;
+        --shadow: 7px 7px 0 #050605;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+    .skip { position: absolute; left: 8px; top: 8px; z-index: 99; background: var(--acid); color: #111; padding: 8px 12px; transform: translateY(-160%); }
+    .skip:focus { transform: translateY(0); }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      display: flex; align-items: center; justify-content: flex-end; gap: 28px;
+      min-height: 72px; border-bottom: 1px solid var(--line);
+    }
+    .topbar nav { display: flex; align-items: center; gap: 28px; }
+    .topbar nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: .92rem; }
+    .topbar nav a:hover { color: var(--ink); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 46px; border: 2px solid var(--ink); border-radius: var(--radius-sm);
+      padding: 10px 17px; background: var(--ink); color: var(--paper); text-decoration: none;
+      font-weight: 700; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .button:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--signal); }
+    .button.acid { color: #111; background: var(--acid); border-color: #111; }
+    .button.ghost { background: transparent; color: var(--ink); }
+    .button.small { min-height: 40px; padding: 7px 13px; font-size: .9rem; }
+    .hero { padding: 72px 0 76px; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(340px, .72fr); gap: 70px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; color: var(--muted); font-weight: 700; font-size: .84rem; letter-spacing: .035em; }
+    .pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 5px color-mix(in srgb, var(--signal) 18%, transparent); }
+    h1, h2, h3 { font-family: "IBM Plex Sans Condensed", sans-serif; margin-top: 0; line-height: .98; }
+    h1 { font-size: clamp(3rem, 7vw, 6.5rem); max-width: 830px; margin-bottom: 27px; letter-spacing: -.045em; }
+    .hero-copy { max-width: 690px; font-size: clamp(1.08rem, 2vw, 1.35rem); color: var(--muted); margin: 0 0 30px; }
+    .hero-copy strong { color: var(--ink); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .sound-poster {
+      position: relative; min-height: 500px; padding: 30px; overflow: hidden;
+      background: var(--dark); color: #f8f6ec; border: 2px solid var(--ink); border-radius: 46% 46% 10px 10px / 16% 16% 10px 10px;
+      box-shadow: var(--shadow);
+    }
+    .sound-poster::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 30px 30px; mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+    .poster-label { position: relative; display: flex; justify-content: space-between; gap: 12px; color: #d8dbcf; font: 600 .82rem/1.2 "IBM Plex Sans",sans-serif; }
+    .poster-title { position: relative; max-width: 330px; margin: 56px 0 22px; font: 700 clamp(2.2rem, 5vw, 4rem)/.92 "IBM Plex Sans Condensed", sans-serif; letter-spacing: -.03em; }
+    .wave { position: relative; width: 100%; height: 130px; margin: 30px 0 36px; color: var(--acid); }
+    .wave path { fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    .poster-footer { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px; }
+    .poster-footer p { margin: 0; max-width: 245px; color: #c8ccbe; font-size: .92rem; }
+    .turntable { width: 72px; height: 72px; border: 16px solid #f8f6ec; border-radius: 50%; position: relative; }
+    .turntable::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--signal); }
+    .ticker { background: var(--acid); color: #111; border-bottom: 2px solid #111; overflow: hidden; }
+    .ticker-track { display: flex; width: max-content; animation: tick 28s linear infinite; }
+    .ticker span { display: inline-flex; align-items: center; gap: 18px; padding: 13px 22px; font: 700 .88rem/1 "IBM Plex Sans", sans-serif; white-space: nowrap; }
+    .ticker span::after { content: "●"; font-size: .7rem; color: var(--signal); }
+    @keyframes tick { to { transform: translateX(-50%); } }
+    section { padding: 92px 0; }
+    .section-intro { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; margin-bottom: 45px; align-items: start; }
+    .section-number { font: 600 .86rem/1 "IBM Plex Sans", sans-serif; color: var(--muted); }
+    h2 { font-size: clamp(2.5rem, 5.5vw, 5rem); margin-bottom: 20px; letter-spacing: -.035em; }
+    .section-intro p { max-width: 720px; margin: 0; color: var(--muted); font-size: 1.12rem; }
+    .role-switch { display: inline-grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--ink); border-radius: 999px; padding: 4px; margin-bottom: 36px; }
+    .role-switch button { border: 0; border-radius: 999px; padding: 10px 18px; background: transparent; color: var(--ink); cursor: pointer; font-weight: 700; }
+    .role-switch button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+    .step { padding: 28px 24px 34px; min-height: 240px; border-right: 1px solid var(--line); }
+    .step:last-child { border-right: 0; }
+    .step b { display: block; width: 34px; height: 34px; margin-bottom: 38px; border: 2px solid var(--ink); border-radius: 50%; text-align: center; line-height: 30px; }
+    .step h3 { font-size: 1.65rem; margin-bottom: 12px; }
+    .step p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .feature { background: var(--dark); color: #f4f2e8; }
+    .feature .section-intro p, .feature .section-number { color: #c0c6b7; }
+    .artist-card { display: grid; grid-template-columns: .82fr 1.18fr; min-height: 480px; border: 1px solid #555c50; background: var(--dark-panel); }
+    .artist-visual { position: relative; display: grid; place-items: center; padding: 40px; border-right: 1px solid #555c50; overflow: hidden; }
+    .artist-visual::before, .artist-visual::after { content: ""; position: absolute; border: 2px solid var(--acid); border-radius: 50%; }
+    .artist-visual::before { width: 310px; height: 310px; }
+    .artist-visual::after { width: 210px; height: 210px; }
+    .monogram { position: relative; z-index: 2; font: 700 8rem/1 "IBM Plex Sans Condensed",sans-serif; letter-spacing: -.1em; color: var(--acid); transform: translateX(-.08em); }
+    .artist-meta { padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; justify-content: space-between; }
+    .artist-tag { display: inline-flex; width: fit-content; padding: 7px 10px; border: 1px solid #747c6d; border-radius: 999px; color: var(--acid); font-size: .8rem; font-weight: 700; letter-spacing: .03em; }
+    .artist-meta h3 { font-size: clamp(3rem, 6vw, 6rem); margin: 26px 0 10px; letter-spacing: -.04em; }
+    .artist-loc { color: #c1c6b8; margin: 0 0 28px; }
+    .artist-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 34px; }
+    .fact { border-top: 1px solid #61675d; padding-top: 12px; color: #daddd2; font-size: .91rem; }
+    .fact strong { display: block; color: #fff; margin-bottom: 4px; }
+    .fit-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .fit-row span { border: 1px solid #62695d; padding: 7px 10px; border-radius: 4px; font-size: .85rem; color: #dfe2d7; }
+    .market { border-bottom: 1px solid var(--line); }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .principle { padding: 28px 0 12px; border-top: 3px solid var(--ink); }
+    .principle h3 { font-size: 2rem; margin-bottom: 12px; }
+    .principle p { color: var(--muted); margin: 0; }
+    .principle .mark { display: block; font: 700 3.5rem/1 "IBM Plex Sans Condensed",sans-serif; color: var(--signal); margin-bottom: 46px; }
+    .builder-section { padding-bottom: 110px; }
+    .builder { display: grid; grid-template-columns: .88fr 1.12fr; border: 2px solid var(--ink); box-shadow: var(--shadow); background: var(--panel); }
+    .controls { padding: clamp(25px, 4vw, 46px); border-right: 1px solid var(--line); }
+    .preview { padding: clamp(25px, 4vw, 46px); display: flex; flex-direction: column; background: var(--ink); color: var(--paper); }
+    .control-group { border: 0; padding: 0; margin: 0 0 28px; }
+    .control-group legend { margin-bottom: 12px; font-weight: 700; }
+    .choice-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .choice { position: relative; }
+    .choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice label { display: block; border: 1px solid var(--line); border-radius: 999px; padding: 9px 13px; cursor: pointer; color: var(--muted); font-size: .9rem; }
+    .choice input:checked + label { border-color: var(--ink); color: var(--ink); background: var(--acid); box-shadow: inset 0 0 0 1px var(--ink); }
+    .counter { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+    .counter button { width: 42px; height: 42px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font-size: 1.25rem; }
+    .counter button:hover { background: color-mix(in srgb, var(--line) 25%, transparent); }
+    .counter output { min-width: 48px; text-align: center; font-weight: 700; }
+    .preview .eyebrow { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+    .brief-title { font: 700 clamp(2.4rem, 5vw, 4.4rem)/.97 "IBM Plex Sans Condensed",sans-serif; letter-spacing: -.035em; margin: 10px 0 28px; }
+    .brief-lines { margin: 0 0 36px; padding: 0; list-style: none; }
+    .brief-lines li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--paper) 24%, transparent); }
+    .brief-lines li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--paper) 24%, transparent); }
+    .brief-lines span { color: color-mix(in srgb, var(--paper) 62%, transparent); }
+    .preview .button { margin-top: auto; width: fit-content; border-color: var(--paper); background: var(--acid); color: #111; }
+    .copy-state { min-height: 24px; color: var(--acid); font-size: .86rem; margin-top: 12px; }
+    .waitlist { background: var(--signal); color: #111; padding: 100px 0; }
+    .wait-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 70px; align-items: start; }
+    .waitlist h2 { max-width: 500px; }
+    .waitlist-copy { max-width: 480px; font-size: 1.12rem; margin: 0 0 34px; }
+    .wait-notes { display: grid; gap: 14px; margin-top: 54px; }
+    .wait-note { display: flex; gap: 12px; align-items: baseline; font-weight: 600; }
+    .wait-note b { font-family: "IBM Plex Sans Condensed",sans-serif; font-size: 1.2rem; }
+    .form-panel { background: #fffdf7; color: #111; border: 2px solid #111; padding: clamp(24px, 5vw, 48px); box-shadow: 8px 8px 0 rgba(17,18,16,.35); }
+    .form-panel .role-switch { width: 100%; margin-bottom: 28px; border-color: #111; }
+    .form-panel .role-switch button { color: #111; }
+    .form-panel .role-switch button[aria-selected="true"] { color: #fffdf7; background: #111; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: .86rem; font-weight: 700; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1px solid #77776e; border-radius: 4px; background: #fffef9; color: #111;
+      padding: 12px 13px; min-height: 48px;
+    }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #111; outline: 3px solid rgba(214,255,51,.8); outline-offset: 1px; }
+    .form-panel .button { width: 100%; margin-top: 26px; }
+    .form-note { font-size: .8rem; color: #5d5f55; margin: 14px 0 0; text-align: center; }
+    .success-box { display: none; border: 2px solid #111; background: var(--acid); padding: 18px; margin-bottom: 24px; font-weight: 700; }
+    .success-box.show { display: block; }
+    footer { padding: 38px 0 48px; background: var(--dark); color: #eff1e8; }
+    .footer-grid { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
+    .footer-line { font: 700 clamp(2rem, 4vw, 4rem)/1 "IBM Plex Sans Condensed", sans-serif; max-width: 570px; margin: 0; }
+    .footer-meta { text-align: right; color: #bfc4b7; font-size: .85rem; }
+    .footer-meta p { margin: 4px 0; }
+    .mobile-cta { display: none; }
+    @media (max-width: 900px) {
+      .hero-grid, .section-intro, .artist-card, .builder, .wait-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 46px; }
+      .sound-poster { min-height: 440px; max-width: 600px; }
+      .section-intro { gap: 18px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step:nth-child(2) { border-right: 0; }
+      .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .artist-visual { border-right: 0; border-bottom: 1px solid #555c50; min-height: 390px; }
+      .controls { border-right: 0; border-bottom: 1px solid var(--line); }
+      .wait-grid { gap: 42px; }
+      .wait-notes { margin-top: 34px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .topbar { min-height: 64px; justify-content: space-between; }
+      .topbar nav { gap: 17px; }
+      .topbar nav a:nth-child(2) { display: none; }
+      .topbar nav a { font-size: .84rem; }
+      .topbar .button { font-size: .84rem; min-height: 40px; padding: 7px 11px; }
+      .hero { padding: 48px 0 58px; }
+      h1 { font-size: clamp(3.15rem, 16vw, 5rem); }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .sound-poster { min-height: 410px; padding: 24px; border-radius: 80px 80px 8px 8px / 38px 38px 8px 8px; }
+      .poster-title { margin-top: 42px; }
+      section { padding: 70px 0; }
+      .steps { grid-template-columns: 1fr; }
+      .step { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .step:last-child { border-bottom: 0; }
+      .step b { margin-bottom: 24px; }
+      .artist-visual { min-height: 320px; }
+      .artist-visual::before { width: 250px; height: 250px; }
+      .artist-visual::after { width: 160px; height: 160px; }
+      .monogram { font-size: 6rem; }
+      .artist-facts, .principles { grid-template-columns: 1fr; }
+      .fact { padding-bottom: 8px; }
+      .principle .mark { margin-bottom: 22px; }
+      .builder { box-shadow: 5px 5px 0 var(--ink); }
+      .brief-lines li { grid-template-columns: 90px 1fr; gap: 10px; }
+      .waitlist { padding: 72px 0; }
+      .fields { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-grid { display: grid; }
+      .footer-meta { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="topbar">
+      <nav aria-label="Primary navigation">
+        <a href="#how">How it works</a>
+        <a href="#artist">Founding artist</a>
+        <a href="#brief">Build a brief</a>
+      </nav>
+      <a class="button small acid" href="#waitlist" data-role-link="brand">Join the waitlist</a>
+    </header>
+  </div>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> FOUNDING WAITLIST OPEN</p>
+          <h1>Put bands inside the campaign—not behind the ad.</h1>
+          <p class="hero-copy"><strong>MusicByte is a marketplace for culture-led growth.</strong> Brands publish what they need. Bands pitch the idea. The market decides what the work is worth.</p>
+          <div class="hero-actions">
+            <a class="button acid" href="#waitlist" data-role-link="brand">I’m building a campaign <span aria-hidden="true">↘</span></a>
+            <a class="button ghost" href="#waitlist" data-role-link="band">I’m building an audience <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+        <aside class="sound-poster" aria-label="A graphic poster visualizing the connection between bands, brands, and results">
+          <div class="poster-label"><span>ONE BRIEF</span><span>MANY SOUNDS</span></div>
+          <div class="poster-title">A new creator class is already on stage.</div>
+          <svg class="wave" viewBox="0 0 520 130" role="img" aria-label="Sound wave connecting a brand brief to a campaign result">
+            <path d="M5 67 L72 67 L91 26 L120 108 L155 43 L181 83 L215 18 L251 111 L284 53 L320 76 L350 34 L385 94 L419 58 L450 67 L515 67" />
+          </svg>
+          <div class="poster-footer">
+            <p>Brief → creative pitch → audience distribution → measured result.</p>
+            <span class="turntable" aria-hidden="true"></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>BANDS MAKE CULTURE</span><span>BRANDS FUND THE MOMENT</span><span>THE MARKET SETS THE RATE</span><span>RESULTS DRIVE THE REBOOK</span>
+        <span>BANDS MAKE CULTURE</span><span>BRANDS FUND THE MOMENT</span><span>THE MARKET SETS THE RATE</span><span>RESULTS DRIVE THE REBOOK</span>
+      </div>
+    </div>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-intro">
+          <span class="section-number">01 / THE MARKETPLACE</span>
+          <div>
+            <h2 id="how-title">Start with the outcome. Let the right band shape the idea.</h2>
+            <p id="how-copy">No fixed rate card and no follower-count lottery. Brands set the goal and guardrails; bands compete on creative fit, audience relevance, and the value they can deliver.</p>
+          </div>
+        </div>
+        <div class="role-switch" role="tablist" aria-label="See how MusicByte works for each side">
+          <button id="how-brand" type="button" role="tab" aria-selected="true" data-how-role="brand">For brands</button>
+          <button id="how-band" type="button" role="tab" aria-selected="false" data-how-role="band">For bands</button>
+        </div>
+        <div class="steps" id="steps" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="feature" id="artist">
+      <div class="wrap">
+        <div class="section-intro">
+          <span class="section-number">02 / CREATOR ZERO</span>
+          <div>
+            <h2>The marketplace starts with a real band.</h2>
+            <p>Without Spaces is the founding artist: a Bay Area rock band with four years of California touring experience, an EP, and an LP. The first campaigns prove the model before the marketplace scales.</p>
+          </div>
+        </div>
+        <article class="artist-card">
+          <div class="artist-visual" aria-hidden="true"><span class="monogram">WS</span></div>
+          <div class="artist-meta">
+            <div>
+              <span class="artist-tag">FOUNDING ARTIST · OPEN TO BRIEFS</span>
+              <h3>Without Spaces</h3>
+              <p class="artist-loc">Bay Area, California · Rock</p>
+              <div class="artist-facts">
+                <div class="fact"><strong>4 years</strong>Touring California</div>
+                <div class="fact"><strong>EP + LP</strong>Released catalog</div>
+                <div class="fact"><strong>Flexible</strong>Market-led offers</div>
+              </div>
+              <strong>Campaign fit</strong>
+              <div class="fit-row" aria-label="Campaign categories">
+                <span>Nightlife</span><span>Food & drink</span><span>Campus</span><span>Streetwear</span><span>Live events</span>
+              </div>
+            </div>
+            <div style="margin-top:34px">
+              <button class="button acid" type="button" id="brief-for-artist">Build a brief for this band <span aria-hidden="true">↘</span></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="market">
+      <div class="wrap">
+        <div class="section-intro">
+          <span class="section-number">03 / MARKET LOGIC</span>
+          <div>
+            <h2>No made-up price. No mystery markup.</h2>
+            <p>The brief creates the market. Bands can accept a fixed budget or pitch an offer; brands compare the creative idea, the audience fit, the usage terms, and the expected business outcome.</p>
+          </div>
+        </div>
+        <div class="principles">
+          <article class="principle"><span class="mark">01</span><h3>Brief the result</h3><p>Define the audience, objective, deliverables, channels, timing, and content rights before anyone talks price.</p></article>
+          <article class="principle"><span class="mark">02</span><h3>Price by value</h3><p>Invite offers or publish a budget. A band’s concept and relevance matter more than a generic follower tier.</p></article>
+          <article class="principle"><span class="mark">03</span><h3>Rebook on evidence</h3><p>Carry the campaign’s tracking plan into the brief so the next decision is based on what actually moved.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="builder-section" id="brief">
+      <div class="wrap">
+        <div class="section-intro">
+          <span class="section-number">04 / BRIEF BUILDER</span>
+          <div>
+            <h2>Sketch the first campaign.</h2>
+            <p>Choose the goal, distribution, and deal structure. Copy the result for your team—or bring it to the founding waitlist.</p>
+          </div>
+        </div>
+        <div class="builder">
+          <form class="controls" id="brief-controls">
+            <fieldset class="control-group">
+              <legend>Campaign goal</legend>
+              <div class="choice-grid">
+                <span class="choice"><input type="radio" name="goal" id="goal-awareness" value="Reach a relevant new audience" checked><label for="goal-awareness">Awareness</label></span>
+                <span class="choice"><input type="radio" name="goal" id="goal-visits" value="Drive measurable visits"><label for="goal-visits">Visits</label></span>
+                <span class="choice"><input type="radio" name="goal" id="goal-launch" value="Launch a product or event"><label for="goal-launch">Launch</label></span>
+                <span class="choice"><input type="radio" name="goal" id="goal-library" value="Build a reusable content library"><label for="goal-library">Content library</label></span>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <legend>Number of content pieces</legend>
+              <div class="counter">
+                <button type="button" id="minus" aria-label="Decrease content pieces">−</button>
+                <output id="pieces" aria-live="polite">3</output>
+                <button type="button" id="plus" aria-label="Increase content pieces">+</button>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <legend>Distribution</legend>
+              <div class="choice-grid">
+                <span class="choice"><input type="radio" name="distribution" id="dist-band" value="Band channels"><label for="dist-band">Band channels</label></span>
+                <span class="choice"><input type="radio" name="distribution" id="dist-brand" value="Brand channels"><label for="dist-brand">Brand channels</label></span>
+                <span class="choice"><input type="radio" name="distribution" id="dist-both" value="Band + brand channels" checked><label for="dist-both">Both</label></span>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <legend>Deal structure</legend>
+              <div class="choice-grid">
+                <span class="choice"><input type="radio" name="deal" id="deal-open" value="Invite market offers" checked><label for="deal-open">Invite offers</label></span>
+                <span class="choice"><input type="radio" name="deal" id="deal-fixed" value="Publish a fixed budget"><label for="deal-fixed">Fixed budget</label></span>
+                <span class="choice"><input type="radio" name="deal" id="deal-performance" value="Base fee + performance upside"><label for="deal-performance">Performance upside</label></span>
+              </div>
+            </fieldset>
+          </form>
+          <div class="preview">
+            <p class="eyebrow">DRAFT BRIEF · WITHOUT SPACES</p>
+            <div class="brief-title" id="brief-title">Reach a relevant new audience</div>
+            <ul class="brief-lines">
+              <li><span>Deliverables</span><strong id="brief-pieces">3 native short-form pieces</strong></li>
+              <li><span>Distribution</span><strong id="brief-distribution">Band + brand channels</strong></li>
+              <li><span>Pricing</span><strong id="brief-deal">Invite market offers</strong></li>
+              <li><span>Measure</span><strong>Campaign-specific link, offer, or outcome</strong></li>
+            </ul>
+            <button class="button" type="button" id="copy-brief">Copy this brief</button>
+            <div class="copy-state" id="copy-state" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="waitlist" id="waitlist">
+      <div class="wrap wait-grid">
+        <div>
+          <p class="eyebrow" style="color:#111"><span class="pulse" style="background:#111;box-shadow:none" aria-hidden="true"></span> FOUNDING COHORT</p>
+          <h2>Help set the opening price.</h2>
+          <p class="waitlist-copy">Join as a brand or band. We’ll use the first cohort to shape the brief format, matching logic, and market mechanics around real demand—not a guessed rate card.</p>
+          <div class="wait-notes">
+            <div class="wait-note"><b>BRANDS</b><span>Bring an audience and a result you want.</span></div>
+            <div class="wait-note"><b>BANDS</b><span>Bring your voice, your channels, and your terms.</span></div>
+          </div>
+        </div>
+        <div class="form-panel">
+          <div class="success-box" id="success-box" role="status">You’re on the founding waitlist. We’ll be in touch.</div>
+          <div class="role-switch" role="tablist" aria-label="Choose waitlist type">
+            <button id="form-brand" type="button" role="tab" aria-selected="true" data-form-role="brand">Join as a brand</button>
+            <button id="form-band" type="button" role="tab" aria-selected="false" data-form-role="band">Join as a band</button>
+          </div>
+          <form name="musicbyte-waitlist" method="POST" action="#" id="waitlist-form">
+            <input type="hidden" name="role" id="role-input" value="brand">
+            <p hidden><label>Don’t fill this out: <input name="company-website"></label></p>
+            <div class="fields">
+              <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field full"><label for="organization" id="organization-label">Brand or company</label><input id="organization" name="organization" autocomplete="organization" required></div>
+              <div class="field full"><label for="profile" id="profile-label">Website or social profile <span style="font-weight:400">(optional)</span></label><input id="profile" name="profile" type="url" inputmode="url" placeholder="https://"></div>
+              <div class="field full"><label for="interest" id="interest-label">What would make the first campaign worth testing?</label><textarea id="interest" name="interest" maxlength="500" placeholder="Audience, objective, product, place, or idea"></textarea></div>
+            </div>
+            <button class="button" type="submit" id="submit-button">Join as a brand</button>
+            <p class="form-note">Founding access, product updates, and pilot invitations. No list spam.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <p class="footer-line">The next creator marketplace sounds like a band.</p>
+      <div class="footer-meta"><p>MusicByte · 2026</p><p>Built for brands, bands, and measurable growth.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var howData = {
+        brand: {
+          title: "Start with the outcome. Let the right band shape the idea.",
+          copy: "No fixed rate card and no follower-count lottery. Brands set the goal and guardrails; bands compete on creative fit, audience relevance, and the value they can deliver.",
+          steps: [
+            ["Publish the brief", "Set the audience, goal, channels, timing, rights, and how success will be measured."],
+            ["Invite the market", "Open the brief to relevant bands or send it directly to a creator you already want."],
+            ["Compare the value", "Review the idea, audience fit, terms, and offer together—not a follower count in isolation."],
+            ["Launch and learn", "Approve the work, track the agreed outcome, and use the evidence to decide whether to rebook."]
+          ]
+        },
+        band: {
+          title: "Turn your audience and point of view into paid creative work.",
+          copy: "Keep your voice. Choose briefs that fit the band, pitch the idea in your own language, and set terms based on the work and value required.",
+          steps: [
+            ["Build the profile", "Show the sound, scene, audience, channels, and campaign formats that genuinely fit the band."],
+            ["Choose the brief", "Review the goal, product, rights, timing, and measurement plan before pitching an idea."],
+            ["Pitch your terms", "Offer a creative concept and rate—or accept a posted budget when the fit makes sense."],
+            ["Make and prove", "Deliver the approved work and connect the campaign outcome to the value the band created."]
+          ]
+        }
+      };
+
+      var steps = document.getElementById("steps");
+      function renderHow(role) {
+        var data = howData[role];
+        document.getElementById("how-title").textContent = data.title;
+        document.getElementById("how-copy").textContent = data.copy;
+        document.querySelectorAll("[data-how-role]").forEach(function (button) {
+          button.setAttribute("aria-selected", String(button.dataset.howRole === role));
+        });
+        steps.innerHTML = data.steps.map(function (item, index) {
+          return '<article class="step"><b>' + (index + 1) + '</b><h3>' + item[0] + '</h3><p>' + item[1] + '</p></article>';
+        }).join("");
+      }
+      document.querySelectorAll("[data-how-role]").forEach(function (button) {
+        button.addEventListener("click", function () { renderHow(button.dataset.howRole); });
+      });
+      renderHow("brand");
+
+      var count = 3;
+      var pieces = document.getElementById("pieces");
+      var briefPieces = document.getElementById("brief-pieces");
+      function updateBrief() {
+        var goal = document.querySelector('input[name="goal"]:checked').value;
+        var distribution = document.querySelector('input[name="distribution"]:checked').value;
+        var deal = document.querySelector('input[name="deal"]:checked').value;
+        document.getElementById("brief-title").textContent = goal;
+        briefPieces.textContent = count + (count === 1 ? " native short-form piece" : " native short-form pieces");
+        document.getElementById("brief-distribution").textContent = distribution;
+        document.getElementById("brief-deal").textContent = deal;
+      }
+      document.getElementById("minus").addEventListener("click", function () { count = Math.max(1, count - 1); pieces.value = count; pieces.textContent = count; updateBrief(); });
+      document.getElementById("plus").addEventListener("click", function () { count = Math.min(12, count + 1); pieces.value = count; pieces.textContent = count; updateBrief(); });
+      document.getElementById("brief-controls").addEventListener("change", updateBrief);
+      document.getElementById("copy-brief").addEventListener("click", function () {
+        var text = "MusicByte draft brief — Without Spaces\nGoal: " + document.getElementById("brief-title").textContent + "\nDeliverables: " + briefPieces.textContent + "\nDistribution: " + document.getElementById("brief-distribution").textContent + "\nPricing: " + document.getElementById("brief-deal").textContent + "\nMeasurement: Campaign-specific link, offer, or outcome";
+        var state = document.getElementById("copy-state");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { state.textContent = "Brief copied."; }, function () { state.textContent = "Copy unavailable in this browser."; });
+        } else {
+          state.textContent = "Copy unavailable in this browser.";
+        }
+      });
+      document.getElementById("brief-for-artist").addEventListener("click", function () {
+        document.getElementById("brief").scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? "auto" : "smooth" });
+      });
+
+      function setFormRole(role) {
+        document.getElementById("role-input").value = role;
+        document.querySelectorAll("[data-form-role]").forEach(function (button) {
+          button.setAttribute("aria-selected", String(button.dataset.formRole === role));
+        });
+        var isBand = role === "band";
+        document.getElementById("organization-label").textContent = isBand ? "Band or artist name" : "Brand or company";
+        document.getElementById("profile-label").innerHTML = isBand ? 'Music or social profile <span style="font-weight:400">(optional)</span>' : 'Website or social profile <span style="font-weight:400">(optional)</span>';
+        document.getElementById("interest-label").textContent = isBand ? "What kind of campaign would fit your band?" : "What would make the first campaign worth testing?";
+        document.getElementById("interest").placeholder = isBand ? "Your scene, audience, content style, or dream brand" : "Audience, objective, product, place, or idea";
+        document.getElementById("submit-button").textContent = isBand ? "Join as a band" : "Join as a brand";
+      }
+      document.querySelectorAll("[data-form-role]").forEach(function (button) {
+        button.addEventListener("click", function () { setFormRole(button.dataset.formRole); });
+      });
+      document.querySelectorAll("[data-role-link]").forEach(function (link) {
+        link.addEventListener("click", function () { setFormRole(link.dataset.roleLink); });
+      });
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("joined") === "1") {
+        document.getElementById("success-box").classList.add("show");
+        document.getElementById("waitlist-form").hidden = true;
+      }
+      // GitHub Pages capture: no Netlify Forms on this host.
+      // Default capture opens a prefilled email to Mack with every field,
+      // so a signup is never silently lost. To switch to a form endpoint
+      // (Formspree/FormSubmit), set FORM_ENDPOINT to that URL and the
+      // handler will POST there instead and show the success box on 2xx.
+      var FORM_ENDPOINT = "";
+      var SIGNUP_EMAIL = "mack@sandcastle-studios.com";
+      document.getElementById("waitlist-form").addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var form = ev.target;
+        if (form.querySelector('input[name="company-website"]').value) { return; }
+        var data = new FormData(form);
+        if (FORM_ENDPOINT) {
+          fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { "Accept": "application/json" } }).then(function (r) {
+            if (r.ok) {
+              document.getElementById("success-box").classList.add("show");
+              form.hidden = true;
+            } else {
+              window.location.href = "mailto:" + SIGNUP_EMAIL + "?subject=" + encodeURIComponent("MusicByte waitlist signup") + "&body=" + encodeURIComponent("Endpoint failed. Name: " + (data.get("name") || ""));
+            }
+          });
+          return;
+        }
+        var lines = [];
+        data.forEach(function (value, key) { if (key !== "company-website" && value) { lines.push(key + ": " + value); } });
+        window.location.href = "mailto:" + SIGNUP_EMAIL + "?subject=" + encodeURIComponent("MusicByte waitlist signup (" + (data.get("role") || "brand") + ")") + "&body=" + encodeURIComponent(lines.join("\n"));
+        document.getElementById("success-box").textContent = "Your email app should open with your signup addressed to us. Send it and you are on the founding waitlist.";
+        document.getElementById("success-box").classList.add("show");
+      });
+      setFormRole("brand");
+      updateBrief();
+    })();
+  </script>
+</body>
+</html>
